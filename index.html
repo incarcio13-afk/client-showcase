@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Web Studio | Client Portal</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="logo">
+      <span class="logo-icon">⚡</span> Apex Web Studio
+    </div>
+    <nav>
+      <a href="#process">Development Process</a>
+      <a href="#estimator">Scope & Cost</a>
+      <a href="#contact" class="btn-nav">Book Discovery Call</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="badge">Transparent Client Workflow</div>
+    <h1>How We Build Your Business Website</h1>
+    <p>Explore our 5-step engineering roadmap, customize your project scope in real-time, and preview interactive design features before we write a single line of code.</p>
+    <div class="hero-actions">
+      <a href="#process" class="btn-primary">Explore Interactive Process</a>
+      <a href="#estimator" class="btn-secondary">Calculate Project Cost</a>
+    </div>
+  </section>
+
+  <!-- 5-Step Process Section -->
+  <section id="process" class="container">
+    <div class="section-title">
+      <h2>The 5-Step Web Production Roadmap</h2>
+      <p>Click and test each stage of our client workflow below.</p>
+    </div>
+
+    <!-- Step 1 -->
+    <div class="card">
+      <div class="card-header">
+        <span class="step-badge">Step 01</span>
+        <h3>Discovery & Sitemap Architecture</h3>
+      </div>
+      <p>We start by mapping your website structure to ensure seamless user navigation and clear call-to-actions.</p>
+
+      <div class="interactive-box">
+        <h4>Interactive Sitemap Builder</h4>
+        <p class="subtext">Toggle pages to build your custom website hierarchy:</p>
+
+        <div class="checkbox-grid">
+          <label><input type="checkbox" checked disabled> Home Page (Core)</label>
+          <label><input type="checkbox" checked disabled> About Us / Story</label>
+          <label><input type="checkbox" id="chk-services" onchange="updateSitemap()"> Services & Solutions</label>
+          <label><input type="checkbox" id="chk-portfolio" onchange="updateSitemap()"> Case Studies / Gallery</label>
+          <label><input type="checkbox" id="chk-blog" onchange="updateSitemap()"> Blog & Content Hub</label>
+          <label><input type="checkbox" id="chk-contact" onchange="updateSitemap()"> Contact & Booking</label>
+        </div>
+
+        <div id="sitemap-output" class="sitemap-preview">
+          Sitemap: Home > About Us
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="card">
+      <div class="card-header">
+        <span class="step-badge">Step 02</span>
+        <h3>UI/UX Design & Brand Aesthetics</h3>
+      </div>
+      <p>We create tailored visual styling that aligns with your brand identity and converts site visitors into clients.</p>
+
+      <div class="interactive-box">
+        <h4>Live Theme Engine Preview</h4>
+        <p class="subtext">Select a color scheme to preview typography and button dynamics:</p>
+
+        <div class="theme-buttons">
+          <button class="btn-theme" onclick="applyTheme('corporate')">Corporate Blue</button>
+          <button class="btn-theme" onclick="applyTheme('dark')">Dark Cyber</button>
+          <button class="btn-theme" onclick="applyTheme('emerald')">Emerald Modern</button>
+          <button class="btn-theme" onclick="applyTheme('sunset')">Warm Sunset</button>
+        </div>
+
+        <div id="theme-demo-box" class="demo-box corporate">
+          <h4 id="demo-heading">Apex Web Studio Preview</h4>
+          <p id="demo-text">Clean typography, responsive spacing, and intentional layout design created to inspire confidence.</p>
+          <button class="demo-btn">Call To Action</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="card">
+      <div class="card-header">
+        <span class="step-badge">Step 03</span>
+        <h3>Multi-Device Responsive Engineering</h3>
+      </div>
+      <p>Your website will adapt flawlessly across mobile phones, tablets, laptops, and ultra-wide desktop displays.</p>
+
+      <div class="interactive-box">
+        <h4>Viewport Testing Simulator</h4>
+        <div class="device-buttons">
+          <button class="btn-device" onclick="setViewport('desktop')">🖥️ Desktop View</button>
+          <button class="btn-device" onclick="setViewport('tablet')">📱 Tablet View</button>
+          <button class="btn-device" onclick="setViewport('mobile')">📲 Mobile View</button>
+        </div>
+
+        <div id="viewport-frame" class="viewport-box desktop">
+          <div class="viewport-header">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span id="viewport-label" class="url-bar">https://yourbusiness.com</span>
+          </div>
+          <div class="viewport-content">
+            <div class="mock-nav">
+              <span>BrandLogo</span>
+              <span>Menu =</span>
+            </div>
+            <div class="mock-hero">
+              <h5>Fast & Responsive Web Design</h5>
+              <p>Optimized experience across all viewports.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4 -->
+    <div class="card">
+      <div class="card-header">
+        <span class="step-badge">Step 04</span>
+        <h3>Performance & SEO Audit Testing</h3>
+      </div>
+      <p>Before launch, every page undergoes rigorous speed optimization, search engine optimization, and code validation.</p>
+
+      <div class="interactive-box">
+        <h4>Automated Audit Simulator</h4>
+        <button class="btn-primary" onclick="runPerformanceAudit()">Run Lighthouse Audit Simulation</button>
+
+        <div class="scores-grid">
+          <div class="score-card">
+            <div class="score-circle" id="score-speed">--</div>
+            <span>Performance</span>
+          </div>
+          <div class="score-card">
+            <div class="score-circle" id="score-seo">--</div>
+            <span>SEO Score</span>
+          </div>
+          <div class="score-card">
+            <div class="score-circle" id="score-access">--</div>
+            <span>Accessibility</span>
+          </div>
+          <div class="score-card">
+            <div class="score-circle" id="score-best">--</div>
+            <span>Best Practices</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5 -->
+    <div class="card">
+      <div class="card-header">
+        <span class="step-badge">Step 05</span>
+        <h3>Launch, Security & Client Handover</h3>
+      </div>
+      <p>We deploy your site safely onto fast hosting infrastructure with standard security configurations.</p>
+
+      <div class="interactive-box">
+        <h4>Pre-Deployment Verification Checklist</h4>
+        <ul class="launch-list">
+          <li>✅ SSL Certificate Installed & HTTPS Enforced</li>
+          <li>✅ Custom Domain & DNS Records Configured</li>
+          <li>✅ Fast CDN Caching & Image Compression Enabled</li>
+          <li>✅ Lead Generation Contact Forms Tested</li>
+          <li>✅ 1-on-1 Recorded Video Training Session Included</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Estimator -->
+  <section id="estimator" class="container">
+    <div class="section-title">
+      <h2>Interactive Project Cost & Scope Estimator</h2>
+      <p>Select your required features to build a preliminary project quote.</p>
+    </div>
+
+    <div class="card estimator-card">
+      <div class="estimator-options">
+        <label class="option-row">
+          <input type="checkbox" checked disabled value="350">
+          <div>
+            <strong>Core Website Build (Base Package)</strong>
+            <p>5 core pages, responsive layout, domain connection, contact form.</p>
+          </div>
+          <span class="price-tag">$350</span>
+        </label>
+
+        <label class="option-row">
+          <input type="checkbox" id="opt-design" value="150" onchange="calculateProjectTotal()">
+          <div>
+            <strong>Custom UI/UX Branding & Design Assets</strong>
+            <p>Tailored brand graphics, custom color scheme, and typography systems.</p>
+          </div>
+          <span class="price-tag">+$150</span>
+        </label>
+
+        <label class="option-row">
+          <input type="checkbox" id="opt-seo" value="100" onchange="calculateProjectTotal()">
+          <div>
+            <strong>Advanced On-Page SEO Package</strong>
+            <p>Keyword indexing, meta tags, XML sitemaps, and Google Search Console setup.</p>
+          </div>
+          <span class="price-tag">+$100</span>
+        </label>
+
+        <label class="option-row">
+          <input type="checkbox" id="opt-cms" value="200" onchange="calculateProjectTotal()">
+          <div>
+            <strong>Content Management Integration (CMS)</strong>
+            <p>Allows your team to easily post blogs, news, and update text yourself.</p>
+          </div>
+          <span class="price-tag">+$200</span>
+        </label>
+      </div>
+
+      <div class="estimator-total">
+        <div>
+          <span>Estimated Total Investment:</span>
+          <h3 id="total-price-display">$350 USD</h3>
+        </div>
+        <a href="#contact" class="btn-primary">Request Formal Proposal</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact/Call to Action Footer -->
+  <footer id="contact">
+    <div class="footer-content">
+      <h3>Ready to Build Your Website?</h3>
+      <p>Get in touch today to schedule your free consultation call and strategy review.</p>
+      <a href="mailto:contact@apexwebstudio.com" class="btn-primary">Email Me Directly</a>
+      <p class="copyright">&copy; 2026 Apex Web Studio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
